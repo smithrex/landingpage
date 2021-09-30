@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :proyectos
   root "landpage#index"
   
   get 'landpage/index'
