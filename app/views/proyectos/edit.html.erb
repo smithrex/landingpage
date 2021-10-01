@@ -1,6 +1,14 @@
-<h1>Editing Proyecto</h1>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Editing Proyecto</h1>
 
-<%= render 'form', proyecto: @proyecto %>
+      <%= render 'form', proyecto: @proyecto %>
 
-<%= link_to 'Show', @proyecto %> |
-<%= link_to 'Back', proyectos_path %>
+      <%= link_to 'Show', @proyecto,
+        class: "btn btn-primary mb-4" %> |
+      <%= link_to 'Back', proyectos_path,
+        class: "btn btn-secondary mb-4" %>
+    </div>
+  </div>
+</div>
