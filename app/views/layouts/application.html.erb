@@ -25,9 +25,17 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ms-auto">
-            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Portafolio</a></li>
-            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#about">Acerca de</a></li>
-            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact">Contacto</a></li>
+            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/#portfolio">Portafolio</a></li>
+            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/#about">Acerca de</a></li>
+            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/#contact">Contacto</a></li>
+            <% if signed_in? %>
+            <li class="nav-item mx-0 mx-lg-1">
+              <a href="/proyectos"
+                class="nav-link py-3 px-0 px-lg-3 rounded">
+                Proyectos
+              </a>
+            </li>
+            <% end %>
             <li class="nav-item mx-0 mx-lg-1">
               <% if signed_in? %>
                 <%= link_to "Salir",
@@ -85,5 +93,53 @@
   <div class="copyright py-4 text-center text-white">
     <div class="container"><small>Copyright &copy; Your Website 2021</small></div>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      window.addEventListener('DOMContentLoaded', event => {
+
+      // Navbar shrink function
+      var navbarShrink = function () {
+          const navbarCollapsible = document.body.querySelector('#mainNav');
+          if (!navbarCollapsible) {
+              return;
+          }
+          if (window.scrollY === 0) {
+              navbarCollapsible.classList.remove('navbar-shrink')
+          } else {
+              navbarCollapsible.classList.add('navbar-shrink')
+          }
+
+      };
+
+      // Shrink the navbar 
+      navbarShrink();
+
+      // Shrink the navbar when page is scrolled
+      document.addEventListener('scroll', navbarShrink);
+
+      // Activate Bootstrap scrollspy on the main nav element
+      const mainNav = document.body.querySelector('#mainNav');
+      if (mainNav) {
+          new bootstrap.ScrollSpy(document.body, {
+              target: '#mainNav',
+              offset: 72,
+          });
+      };
+
+      // Collapse responsive navbar when toggler is visible
+      const navbarToggler = document.body.querySelector('.navbar-toggler');
+      const responsiveNavItems = [].slice.call(
+          document.querySelectorAll('#navbarResponsive .nav-link')
+      );
+      responsiveNavItems.map(function (responsiveNavItem) {
+          responsiveNavItem.addEventListener('click', () => {
+              if (window.getComputedStyle(navbarToggler).display !== 'none') {
+                  navbarToggler.click();
+              }
+            });
+        });
+
+      });
+    </script>
   </body>
 </html>

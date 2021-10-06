@@ -13,3 +13,14 @@
  *= require_tree .
  *= require_self
  */
+
+#signin-form {margin: 0px 0px 25px 0px}
+#signin-form input[type=email] {
+  width:100%
+}
+#signin-form input[type=password] {
+  width:100%
+}
+
+
+
