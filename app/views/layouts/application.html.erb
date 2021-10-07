@@ -53,8 +53,18 @@
       </div>
     </nav>
     <div style="padding-top: 200px">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <% if notice.blank? %>
+      <% else %>
+      <div class="alert alert-primary" role="alert"> 
+      <%= notice %>
+      </div>
+      <% end %>
+      <% if alert.blank? %>
+      <% else %>
+      <div class="alert alert-danger" role="alert"> 
+      <%= alert %>
+      </div>
+      <% end %>
       <%= yield %>
     </div>
   <footer class="footer text-center">
