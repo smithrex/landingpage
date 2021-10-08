@@ -1,11 +1,6 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <% unless notice.blank? %>
-        <div class= "alert alert-success"
-          id="notice"><%= notice %></div>
-      <% end %>
-
       <p>
         <strong>Nombre:</strong>
         <%= @proyecto.nombre %>
@@ -16,9 +11,9 @@
         <%= @proyecto.imagen %>
       </p>
 
-      <%= link_to 'Edit', edit_proyecto_path(@proyecto),
+      <%= link_to 'Editar', edit_proyecto_path(@proyecto),
       class: "btn btn-primary mb-4" %> |
-      <%= link_to 'Back', proyectos_path,
+      <%= link_to 'Volver', proyectos_path,
       class: "btn btn-secondary mb-4" %>
     </div>
   </div>
