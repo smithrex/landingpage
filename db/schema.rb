@@ -10,13 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_09_005945) do
+ActiveRecord::Schema.define(version: 2021_10_09_013405) do
 
   create_table "categoria", force: :cascade do |t|
     t.string "nombre"
     t.string "imagen"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "productos", force: :cascade do |t|
+    t.string "nombre"
+    t.string "imagen"
+    t.string "descripcion"
+    t.integer "categorium_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["categorium_id"], name: "index_productos_on_categorium_id"
   end
 
   create_table "proyectos", force: :cascade do |t|
@@ -38,4 +48,5 @@ ActiveRecord::Schema.define(version: 2021_10_09_005945) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "productos", "categoria"
 end
