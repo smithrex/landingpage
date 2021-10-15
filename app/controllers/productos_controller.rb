@@ -1,11 +1,21 @@
 class ProductosController < ApplicationController
   before_action :set_producto, only: %i[ show edit update destroy ]
 
+  layout "admin", except: [:filter]
+
+  def initialize
+    super
+    @categorias = Categorium.all
+  end
+
   # GET /productos or /productos.json
   def index
     @productos = Producto.all
   end
-
+    
+  def filter
+    @productos = Producto.all
+  end
   # GET /productos/1 or /productos/1.json
   def show
   end
@@ -13,6 +23,7 @@ class ProductosController < ApplicationController
   # GET /productos/new
   def new
     @producto = Producto.new
+   
   end
 
   # GET /productos/1/edit

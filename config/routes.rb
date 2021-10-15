@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
-  resources :productos
+  resources :productos do 
+    collection do 
+      get :filter
+    end
+  end
   resources :categoria
   devise_for :users
   resources :proyectos

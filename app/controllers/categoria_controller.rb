@@ -1,6 +1,7 @@
 class CategoriaController < ApplicationController
   before_action :authenticate_user!
   before_action :set_categorium, only: %i[ show edit update destroy ]
+  layout "admin"
 
   # GET /categoria or /categoria.json
   def index

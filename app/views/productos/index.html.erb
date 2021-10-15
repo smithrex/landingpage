@@ -1,13 +1,17 @@
+<link href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css"
+rel="stylesheet" >
 <p id="notice"><%= notice %></p>
 
 <h1>Productos</h1>
 
-<table>
+<table id="myTable" class="table">
   <thead>
     <tr>
       <th>Nombre</th>
-      <th>Categorium</th>
-      <th colspan="3"></th>
+      <th>Categoria</th>
+      <th></th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -15,10 +19,10 @@
     <% @productos.each do |producto| %>
       <tr>
         <td><%= producto.nombre %></td>
-        <td><%= producto.categorium_id %></td>
-        <td><%= link_to 'Show', producto %></td>
-        <td><%= link_to 'Edit', edit_producto_path(producto) %></td>
-        <td><%= link_to 'Destroy', producto, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= producto.categorium.nombre %></td>
+        <td><%= link_to 'Mostrar', producto, class: "btn btn-primary mb-4" %></td>
+        <td><%= link_to 'Editar', edit_producto_path(producto), class:"btn btn-secondary"  %></td>
+        <td><%= link_to 'Eliminar', producto, method: :delete, data: { confirm: 'Estás seguro?' }, class: "btn btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +30,19 @@
 
 <br>
 
-<%= link_to 'New Producto', new_producto_path %>
+<%= link_to 'Nuevo Producto', new_producto_path, class: "btn btn-primary" %>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#myTable').DataTable();
+  });
+</script>
+
+
+
+
+
+
