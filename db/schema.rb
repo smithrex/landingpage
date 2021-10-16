@@ -10,13 +10,66 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_09_013405) do
+ActiveRecord::Schema.define(version: 2021_10_16_153604) do
 
   create_table "categoria", force: :cascade do |t|
     t.string "nombre"
     t.string "imagen"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "clientes", force: :cascade do |t|
+    t.string "nombres"
+    t.string "apell_pat"
+    t.string "apell_mat"
+    t.string "nif"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "orden_entregas", force: :cascade do |t|
+    t.integer "orden_id", null: false
+    t.date "fecha"
+    t.string "instrucciones"
+    t.string "direccion"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["orden_id"], name: "index_orden_entregas_on_orden_id"
+  end
+
+  create_table "orden_productos", force: :cascade do |t|
+    t.integer "orden_id", null: false
+    t.integer "producto_id", null: false
+    t.integer "cantidad"
+    t.decimal "precio"
+    t.string "instrucciones"
+    t.decimal "descuento"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["orden_id"], name: "index_orden_productos_on_orden_id"
+    t.index ["producto_id"], name: "index_orden_productos_on_producto_id"
+  end
+
+  create_table "orden_proyectos", force: :cascade do |t|
+    t.integer "orden_id", null: false
+    t.integer "proyecto_id", null: false
+    t.string "instrucciones"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["orden_id"], name: "index_orden_proyectos_on_orden_id"
+    t.index ["proyecto_id"], name: "index_orden_proyectos_on_proyecto_id"
+  end
+
+  create_table "ordens", force: :cascade do |t|
+    t.integer "cliente_id", null: false
+    t.string "codigo"
+    t.date "proceso"
+    t.date "entrega"
+    t.date "cierre"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["cliente_id"], name: "index_ordens_on_cliente_id"
   end
 
   create_table "productos", force: :cascade do |t|
@@ -48,5 +101,11 @@ ActiveRecord::Schema.define(version: 2021_10_09_013405) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "orden_entregas", "ordens"
+  add_foreign_key "orden_productos", "ordens"
+  add_foreign_key "orden_productos", "productos"
+  add_foreign_key "orden_proyectos", "ordens"
+  add_foreign_key "orden_proyectos", "proyectos"
+  add_foreign_key "ordens", "clientes"
   add_foreign_key "productos", "categoria"
 end

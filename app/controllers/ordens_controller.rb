@@ -1,6 +1,7 @@
 class OrdensController < ApplicationController
   before_action :set_orden, only: %i[ show edit update destroy ]
 
+  layout "admin"
   # GET /ordens or /ordens.json
   def index
     @ordens = Orden.all
