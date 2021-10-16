@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Orden:</strong>
+  <%= @orden_entrega.orden_id %>
+</p>
+
+<p>
+  <strong>Fecha:</strong>
+  <%= @orden_entrega.fecha %>
+</p>
+
+<p>
+  <strong>Instrucciones:</strong>
+  <%= @orden_entrega.instrucciones %>
+</p>
+
+<p>
+  <strong>Direccion:</strong>
+  <%= @orden_entrega.direccion %>
+</p>
+
+<%= link_to 'Edit', edit_orden_entrega_path(@orden_entrega) %> |
+<%= link_to 'Back', orden_entregas_path %>

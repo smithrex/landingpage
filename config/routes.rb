@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :orden_entregas
   resources :orden_productos
   resources :orden_proyectos
   resources :ordens

@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Orden Entregas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Orden</th>
+      <th>Fecha</th>
+      <th>Instrucciones</th>
+      <th>Direccion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orden_entregas.each do |orden_entrega| %>
+      <tr>
+        <td><%= orden_entrega.orden_id %></td>
+        <td><%= orden_entrega.fecha %></td>
+        <td><%= orden_entrega.instrucciones %></td>
+        <td><%= orden_entrega.direccion %></td>
+        <td><%= link_to 'Show', orden_entrega %></td>
+        <td><%= link_to 'Edit', edit_orden_entrega_path(orden_entrega) %></td>
+        <td><%= link_to 'Destroy', orden_entrega, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Orden Entrega', new_orden_entrega_path %>
