@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Orden:</strong>
+  <%= @orden_proyecto.orden_id %>
+</p>
+
+<p>
+  <strong>Proyecto:</strong>
+  <%= @orden_proyecto.proyecto_id %>
+</p>
+
+<p>
+  <strong>Instrucciones:</strong>
+  <%= @orden_proyecto.instrucciones %>
+</p>
+
+<%= link_to 'Edit', edit_orden_proyecto_path(@orden_proyecto) %> |
+<%= link_to 'Back', orden_proyectos_path %>
