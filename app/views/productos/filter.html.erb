@@ -1,16 +1,17 @@
 <div class= "container">
   <div class= "row">
-    <div class="col">
-      <% @productos.each do |t| %>
-        <div class="card" style="width: 18rem;">
-          <img src="..." class="card-img-top" alt="...">
+    <% @productos.each_with_index do |t| %>
+      <div class="col-3">
+        <div class="card mt-4">
+          <img src="<%= t.imagen %>"
+           class="card-img-top" alt="<%= t.nombre %>">
           <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <h5 class="card-title"><%= t.nombre %></h5>
+            <p class="card-text"><%= t.descripcion %></p>
+            <a href="#" class="btn btn-primary">Comprar</a>
           </div>
         </div>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
 </div>
