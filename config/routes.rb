@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :clientes
   resources :productos do 
     collection do 
       get :filter
