@@ -1,4 +1,31 @@
-<h1><%= @producto.nombre %></h1> 
-<form action="/ordens/carrito" method="POST">
-  <button type="submit">Anadir al carrito</button>
-</form>
+<div class= "container">
+  <div class ="row">
+    <div class="col">
+      <h1><%= @producto.nombre %></h1> 
+    </div>
+    <div class="col">
+      <form action="/ordens/carrito" method="POST">
+      <%= hidden_field_tag :authenticity_token, 
+          form_authenticity_token %>
+
+      <%= hidden_field_tag :producto_id, @producto.id %>    
+      
+      <div class="mt-4 mb-4"> 
+        <%= label_tag(:cantidad, "Cantidad:") %>
+        <%= number_field_tag :cantidad, 
+          nil, min: 1, max: 99, required: true %>
+      </div>
+      
+      <button type="submit" 
+        class="btn btn-primary">Anadir al carrito
+      </button>
+      </form>
+    </div>
+  </div>
+ </div> 
+
+
+
+
+
+

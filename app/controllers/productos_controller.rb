@@ -1,7 +1,7 @@
 class ProductosController < ApplicationController
   before_action :set_producto, only: %i[ show edit update destroy ]
 
-  layout "admin", except: [:filter]
+  layout "admin", except: [:filter, :comprar]
 
   def initialize
     super
