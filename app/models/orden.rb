@@ -1,5 +1,6 @@
 class Orden < ApplicationRecord
   belongs_to :cliente
+  has_many :orden_producto
 
   def proceso_text
     if self.proceso.year == 2016 and 
