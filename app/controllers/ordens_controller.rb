@@ -11,7 +11,7 @@ class OrdensController < ApplicationController
     @qty = params[:cantidad]
     @producto_id = params[:producto_id]
 
-    cliente Cliente.all.first
+    cliente = Cliente.all.first
     if cliente.blank?
       cliente = Cliente.new
       clientes.nombres = "Rod"

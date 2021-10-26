@@ -1,3 +1,6 @@
+<style type="text/css" media="print">
+
+</style>
 <table class="table">
   <tbody>
     <tr>
@@ -62,7 +65,7 @@
     </tr>
   </thead>
   <tbody>
-    <%= @orden.orden_producto.each do |t| %> 
+    <% @orden.orden_producto.each do |t| %> 
     <tr>
       <td>
         <%= t.producto.nombre %>
@@ -84,30 +87,8 @@
 
 
 
-<p>
-  <strong>Cliente:</strong>
-  <%= @orden.cliente_id %>
-</p>
 
-<p>
-  <strong>Codigo:</strong>
-  <%= @orden.codigo %>
-</p>
+<%= link_to 'Editar', edit_orden_path(@orden), class: "btn btn-primary mb-4 d-print-none" %>
+<%= link_to 'Volver', ordens_path, class: "btn btn-secondary mb-4 d-print-none" %>
 
-<p>
-  <strong>Proceso:</strong>
-  <%= @orden.proceso %>
-</p>
-
-<p>
-  <strong>Entrega:</strong>
-  <%= @orden.entrega %>
-</p>
-
-<p>
-  <strong>Cierre:</strong>
-  <%= @orden.cierre %>
-</p>
-
-<%= link_to 'Editar', edit_orden_path(@orden), class: "btn btn-primary mb-4" %> |
-<%= link_to 'Volver', ordens_path, class: "btn btn-secondary mb-4" %>
+<a onclick= "window.print()" class="btn btn-primary d-print-none">Imprimir</a>
