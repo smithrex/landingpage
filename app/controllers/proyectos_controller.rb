@@ -1,6 +1,8 @@
 class ProyectosController < ApplicationController
   before_action :authenticate_user! 
   before_action :set_proyecto, only: [:show, :edit, :update, :destroy]
+
+  layout 'admin'
   
   # GET /proyectos
   # GET /proyectos.json

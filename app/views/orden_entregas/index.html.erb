@@ -20,9 +20,9 @@
         <td><%= orden_entrega.fecha %></td>
         <td><%= orden_entrega.instrucciones %></td>
         <td><%= orden_entrega.direccion %></td>
-        <td><%= link_to 'Show', orden_entrega %></td>
-        <td><%= link_to 'Edit', edit_orden_entrega_path(orden_entrega) %></td>
-        <td><%= link_to 'Destroy', orden_entrega, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Mostrar', orden_entrega, class: "btn btn-primary mb-4" %></td>
+        <td><%= link_to 'Editar', edit_orden_entrega_path(orden_entrega), class: "btn btn-secondary mb-4" %></td>
+        <td><%= link_to 'Eliminar', orden_entrega, method: :delete, data: { confirm: 'Estas seguro?' }, class: "btn btn-danger mb-4" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Orden Entrega', new_orden_entrega_path %>
+<%= link_to 'Nueva Orden Entrega', new_orden_entrega_path %>

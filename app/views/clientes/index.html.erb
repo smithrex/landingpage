@@ -24,9 +24,10 @@ rel="stylesheet" >
         <td><%= cliente.apell_pat %></td>
         <td><%= cliente.apell_mat %></td>
         <td><%= cliente.nif %></td>
-        <td><%= link_to 'Mostar', cliente %></td>
-        <td><%= link_to 'Editar', edit_cliente_path(cliente), class: "btn btn-primary mb-4" %></td>
-        <td><%= link_to 'Eliminar', cliente, method: :delete, data: { confirm: 'Estas seguro?' } %></td>
+        <td><%= link_to 'Mostrar',  cliente, class: "btn btn-primary mb-4" %></td>
+        <td><%= link_to 'Editar', edit_cliente_path(cliente), class: "btn btn-secondary mb-4" %></td>
+        <td><%= link_to 'Eliminar', cliente, method: :delete, data: { confirm: 'Estas seguro?' }, 
+         class: "btn btn-danger mb-4"%></td>
       </tr>
     <% end %>
   </tbody>
@@ -41,7 +42,11 @@ rel="stylesheet" >
 <script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 
 <script type="text/javascript">
-  $(document).ready(function(){
-    $('#myTable').DataTable();
+    $(document).ready(function(){
+    $('#myTable').DataTable({
+      language: {
+        url: "//cdn.datatables.net/plug-ins/1.11.3/i18n/es-cl.json"
+      }
+    });
   });
 </script>

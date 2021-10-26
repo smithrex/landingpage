@@ -20,5 +20,5 @@
   <%= @orden_entrega.direccion %>
 </p>
 
-<%= link_to 'Edit', edit_orden_entrega_path(@orden_entrega) %> |
-<%= link_to 'Back', orden_entregas_path %>
+<%= link_to 'Editar', edit_orden_entrega_path(@orden_entrega), class: "btn btn-primary mb-4" %> |
+<%= link_to 'Volver', orden_entregas_path, class: "btn btn-secondary mb-4" %>

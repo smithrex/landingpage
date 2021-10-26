@@ -18,9 +18,9 @@
         <td><%= orden_proyecto.orden_id %></td>
         <td><%= orden_proyecto.proyecto_id %></td>
         <td><%= orden_proyecto.instrucciones %></td>
-        <td><%= link_to 'Show', orden_proyecto %></td>
-        <td><%= link_to 'Edit', edit_orden_proyecto_path(orden_proyecto) %></td>
-        <td><%= link_to 'Destroy', orden_proyecto, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Mostrar', orden_proyecto %></td>
+        <td><%= link_to 'Editar', edit_orden_proyecto_path(orden_proyecto) %></td>
+        <td><%= link_to 'Eliminar', orden_proyecto, method: :delete, data: { confirm: 'Estas seguro?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Orden Proyecto', new_orden_proyecto_path %>
+<%= link_to 'Nuevo Orden Proyecto', new_orden_proyecto_path %>

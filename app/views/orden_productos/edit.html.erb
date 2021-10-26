@@ -1,6 +1,6 @@
-<h1>Editing Orden Producto</h1>
+<h1>Editar Orden Producto</h1>
 
 <%= render 'form', orden_producto: @orden_producto %>
 
-<%= link_to 'Show', @orden_producto %> |
-<%= link_to 'Back', orden_productos_path %>
+<%= link_to 'Mostrar', @orden_producto, class: "btn btn-primary mb-4" %> 
+<%= link_to 'Volver', orden_productos_path, class: "btn btn-secondary mb-4" %>

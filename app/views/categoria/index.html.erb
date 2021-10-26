@@ -1,4 +1,4 @@
-<link href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css"
+r<link href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css"
 rel="stylesheet" >
 
 <p id="notice"><%= notice %></p>
@@ -39,8 +39,12 @@ rel="stylesheet" >
 <script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 
 <script type="text/javascript">
-  $(document).ready(function(){
-    $('#myTable').DataTable();
+    $(document).ready(function(){
+    $('#myTable').DataTable({
+      language: {
+        url: "//cdn.datatables.net/plug-ins/1.11.3/i18n/es-cl.json"
+      }
+    });
   });
 </script>
 

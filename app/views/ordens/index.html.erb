@@ -26,9 +26,9 @@ rel="stylesheet" >
         <td><%= orden.proceso_text %></td>
         <td><%= orden.entrega_text %></td>
         <td><%= orden.cierre_text %></td>
-        <td><%= link_to 'Mostrar', orden %></td>
-        <td><%= link_to 'Editar', edit_orden_path(orden) %></td>
-        <td><%= link_to 'Eliminar', orden, method: :delete, data: { confirm: 'Estás seguro?' } %></td>
+        <td><%= link_to 'Mostrar', orden, class: "btn btn-primary mb-4" %></td>
+        <td><%= link_to 'Editar', edit_orden_path(orden), class: "btn btn-secondary mb-4" %></td>
+        <td><%= link_to 'Eliminar', orden, method: :delete, data: { confirm: 'Estás seguro?' }, class: "btn btn-danger mb-4" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -36,15 +36,19 @@ rel="stylesheet" >
 
 <br>
 
-<%= link_to 'Nueva Orden', new_orden_path %>
+<%= link_to 'Nueva Orden', new_orden_path, class: "btn btn-primary mb-4" %>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 
 <script type="text/javascript">
-  $(document).ready(function(){
-    $('#myTable').DataTable();
+    $(document).ready(function(){
+    $('#myTable').DataTable({
+      language: {
+        url: "//cdn.datatables.net/plug-ins/1.11.3/i18n/es-cl.json"
+      }
+    });
   });
 </script>
 

@@ -6,9 +6,9 @@
 </p>
 
 <p>
-  <strong>Categorium:</strong>
-  <%= @producto.categorium_id %>
+  <strong>Categoria:</strong>
+  <%= @producto.categorium.nombre %>
 </p>
 
-<%= link_to 'Editar', edit_producto_path(@producto) %> |
-<%= link_to 'Anterior', productos_path %>
+<%= link_to 'Editar', edit_producto_path(@producto), class: "btn btn-primary mb-4" %> |
+<%= link_to 'Volver', productos_path, class: "btn btn-secondary mb-4" %>
