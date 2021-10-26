@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_16_153604) do
+ActiveRecord::Schema.define(version: 2021_10_26_222152) do
 
   create_table "categoria", force: :cascade do |t|
     t.string "nombre"
@@ -89,6 +89,21 @@ ActiveRecord::Schema.define(version: 2021_10_16_153604) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "rol_usuarios", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "rol_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["rol_id"], name: "index_rol_usuarios_on_rol_id"
+    t.index ["user_id"], name: "index_rol_usuarios_on_user_id"
+  end
+
+  create_table "rols", force: :cascade do |t|
+    t.string "nombre"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -108,4 +123,6 @@ ActiveRecord::Schema.define(version: 2021_10_16_153604) do
   add_foreign_key "orden_proyectos", "proyectos"
   add_foreign_key "ordens", "clientes"
   add_foreign_key "productos", "categoria"
+  add_foreign_key "rol_usuarios", "rols"
+  add_foreign_key "rol_usuarios", "users"
 end

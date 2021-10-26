@@ -1,24 +1,36 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Nombres:</strong>
-  <%= @cliente.nombres %>
-</p>
-
-<p>
-  <strong>Apell pat:</strong>
-  <%= @cliente.apell_pat %>
-</p>
-
-<p>
-  <strong>Apell mat:</strong>
-  <%= @cliente.apell_mat %>
-</p>
-
-<p>
-  <strong>Nif:</strong>
-  <%= @cliente.nif %>
-</p>
+<div class="row">
+  <div class="col-4">
+    <div class="card">
+      <div class="card-header">
+        Opciones
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <a href="#">Mi Perfil</a>
+        </li>
+        <li class="list-group-item">
+          <a href="#">Ordenes</a>
+        </li>
+        <li class="list-group-item">
+          <a href="#">Cambiar Contrasena</a>
+        </li>
+        <li class="list-group-item">
+          <a href="#">Salir</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-8">
+    <div class="card">
+      <div class="card-header">
+        Mi Perfil
+      </div>
+      <div class="card-body">
+        <%= render 'form', cliente: @cliente %>
+      </div>
+    </div>
+  </div>
+</div>
 
 <%= link_to 'Editar', edit_cliente_path(@cliente), class: "btn btn-primary mb-4" %> |
 <%= link_to 'Volver', clientes_path, class: "btn btn-secondary mb-4" %>

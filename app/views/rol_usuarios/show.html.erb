@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @rol_usuario.user_id %>
+</p>
+
+<p>
+  <strong>Rol:</strong>
+  <%= @rol_usuario.rol_id %>
+</p>
+
+<%= link_to 'Editar', edit_rol_usuario_path(@rol_usuario), class: "btn btn-primary mb-4" %> |
+<%= link_to 'Volver', rol_usuarios_path, class: "btn btn-secondary mb-4" %>

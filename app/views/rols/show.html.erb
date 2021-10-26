@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @rol.nombre %>
+</p>
+
+<%= link_to 'Editar', edit_rol_path(@rol), class: "btn btn-primary mb-4" %> |
+<%= link_to 'Volver', rols_path, class: "btn btn-secondary mb-4" %>
