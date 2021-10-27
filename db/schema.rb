@@ -20,12 +20,14 @@ ActiveRecord::Schema.define(version: 2021_10_26_222152) do
   end
 
   create_table "clientes", force: :cascade do |t|
+    t.integer "user_id", null: false
     t.string "nombres"
     t.string "apell_pat"
     t.string "apell_mat"
     t.string "nif"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_clientes_on_user_id"
   end
 
   create_table "orden_entregas", force: :cascade do |t|
@@ -116,6 +118,7 @@ ActiveRecord::Schema.define(version: 2021_10_26_222152) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "clientes", "users"
   add_foreign_key "orden_entregas", "ordens"
   add_foreign_key "orden_productos", "ordens"
   add_foreign_key "orden_productos", "productos"
