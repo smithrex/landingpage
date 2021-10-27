@@ -6,10 +6,10 @@
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
-          <a href="#">Mi Perfil</a>
+          <a href="/clientes/<%= @cliente.id %>/?vista=perfil">Mi Perfil</a>
         </li>
         <li class="list-group-item">
-          <a href="#">Ordenes</a>
+          <a href="/clientes/<%= @cliente.id %>/?vista=ordenes">Ordenes</a>
         </li>
         <li class="list-group-item">
           <a href="#">Cambiar Contrasena</a>
@@ -26,7 +26,11 @@
         Mi Perfil
       </div>
       <div class="card-body">
-        <%= render 'form', cliente: @cliente %>
+        <% if @vista == "perfil" %>
+          <%= render 'form', cliente: @cliente %>
+         <% elsif @vista =="ordenes" %>
+          <%= render 'ordenes', cliente: @cliente %>
+         <% end %>
       </div>
     </div>
   </div>
