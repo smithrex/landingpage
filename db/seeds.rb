@@ -7,13 +7,13 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Categorium.create([{
-  nombre: "Nivel Básico" ,  
+  nombre: "Nivel Basico" ,  
   imagen: "https://cdn.pixabay.com/photo/2013/07/12/19/19/linux-154544_960_720.png"
 }, {
   nombre: "Nivel Intermedio",
   imagen: "https://i.imgur.com/amckVul.jpeg"
 }, {
-  nombre: "Nivel Avanzado"  
+  nombre: "Nivel Avanzado",  
   imagen: "https://i.imgur.com/AD3MbBi.jpeg"
 }, {
   nombre: "Nivel Pro",
@@ -24,12 +24,12 @@ Categorium.create([{
   nombre: "Conceptos basicos"  , 
   descripcion: "conceptos basicos del Idioma ingles", 
   imagen: "https://cdn.pixabay.com/photo/2013/07/12/19/19/linux-154544_960_720.png" , 
-  categorium_id: Categorium.first.id
+  categorium_id: Categorium.where(nombre: "Nivel Basico").first.id
 }, {
   nombre: "Vocabulario y Lectura"  , 
   descripcion: "conceptos basicos del idioma ingles", 
   imagen: "https://cdn.pixabay.com/photo/2013/07/12/19/19/linux-154544_960_720.png" , 
-  categorium_id: Categorium.first.id
+  categorium_id: Categorium.where(nombre: "Nivel Basico").first.id
 }, {
   nombre: "Conversación comunicacional"  , 
   descripcion: "enfocado en el mejoramiento de la fluidez" , 
