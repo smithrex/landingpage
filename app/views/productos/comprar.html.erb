@@ -1,9 +1,12 @@
 <div class= "container">
   <div class ="row">
     <div class="col">
-      <h1><%= @producto.nombre %></h1> 
+      <h1><%= @producto.nombre %></h1>
+      <img class="img-fluid" src= "<%= @producto.imagen %>">
     </div>
     <div class="col">
+      <p><%= @producto.descripcion %></p>
+
       <form action="/ordens/carrito" method="POST">
       <%= hidden_field_tag :authenticity_token, 
           form_authenticity_token %>
