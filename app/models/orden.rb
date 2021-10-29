@@ -2,6 +2,14 @@ class Orden < ApplicationRecord
   belongs_to :cliente
   has_many :orden_producto
 
+  def get_total 
+    t = 0
+    self.orden_producto.each do |u| 
+      t = t + (u.precio * u.cantidad)
+    end
+    return t
+  end
+  
   def proceso_text
     if self.proceso.year == 2016 and 
       self.proceso.month == 10 and

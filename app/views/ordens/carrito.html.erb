@@ -1,13 +1,36 @@
-<h1>Carrito</h1>
-<table class="table">
-  <tbody>
-    <% @orden.orden_producto.each do |t| %>
-    <tr>
-      <td><%= t.producto.nombre %></td>
-      <td><%= t.cantidad %></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Carrito</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Precio </th>
+            <th>Subtotal </th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @orden.orden_producto.each do |t| %>
+          <tr>
+            <td><%= t.producto.nombre %></td>
+            <td><%= t.cantidad %></td>
+            <td><%= t.precio %></td>
+            <td><%= t.cantidad * t.precio %></td>
+          </tr>
+          <% end %>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>Total </td>
+            <td><%= @orden.get_total %></td>
+          </tr>
+        </tbody>
+      </table>
+        <div class= "text-end">
+          <button class="btn btn-primary">Confirmar</button>
+        </div>
+    </div>
+  </div>
+</div>

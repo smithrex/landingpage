@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 2021_10_26_222152) do
     t.string "nombre"
     t.string "imagen"
     t.string "descripcion"
+    t.decimal "precio"
     t.integer "categorium_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

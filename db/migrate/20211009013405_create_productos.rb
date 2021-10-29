@@ -4,6 +4,7 @@ class CreateProductos < ActiveRecord::Migration[6.1]
       t.string :nombre
       t.string :imagen
       t.string :descripcion
+      t.decimal :precio
       t.references :categorium, null: false, foreign_key: true
 
       t.timestamps

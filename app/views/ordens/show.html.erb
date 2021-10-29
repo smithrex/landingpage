@@ -18,6 +18,12 @@
                 <%= @orden.cliente.nif %>
               </td>
             </tr>
+            <tr>
+              <td>
+                <strong>Correo: </strong>
+                <%= @orden.cliente.user.email %>
+              </td>
+            </tr>
           </tbody>
         </table>
       </td>
@@ -77,10 +83,16 @@
         <%= t.precio %>
       </td>
       <td>
-        
+        <%= t.cantidad * t.precio %>
       </td>
     </tr>
-    <% end %> 
+    <% end %>
+    </tr>
+      <td></td>
+      <td></td>
+      <td><strong>Total</strong></td>
+      <td><strong><%= @orden.get_total %></strong></td>
+    </tr> 
   </tbody>
 </table>
 
@@ -91,4 +103,4 @@
 <%= link_to 'Editar', edit_orden_path(@orden), class: "btn btn-primary mb-4 d-print-none" %>
 <%= link_to 'Volver', ordens_path, class: "btn btn-secondary mb-4 d-print-none" %>
 
-<a onclick= "window.print()" class="btn btn-primary d-print-none">Imprimir</a>
+<a onclick= "window.print()" class="btn btn-primary mb-4 d-print-none">Imprimir</a>
