@@ -1,0 +1,10 @@
+<h1>Detalle de Staff </h1>
+
+<form>
+  <select class="form-control">
+    <% @roles.each do |t| %>
+    <option value="<%= t.id %>"><%= t.nombre %></option>
+    <% end %>
+  </select>
+  <button class="btn btn-primary">Establecer Rol</button>
+</form>

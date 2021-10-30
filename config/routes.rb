@@ -20,10 +20,17 @@ Rails.application.routes.draw do
       get :filter
     end
   end
+  
   resources :categoria
   devise_for :users
   resources :proyectos
   root "landpage#index"
+
+  get 'admin/users', to: "landpage#users"
+  
+  get 'admin/users/:id/show', to: "landpage#users_show"
+  get 'admin/users/:id/edit', to: "landpage#users_edit" 
+  get 'admin/users/:id/destroy', to: "landpage#users_destroy"     
   
   get 'landpage/index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
