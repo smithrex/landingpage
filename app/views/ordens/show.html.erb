@@ -96,11 +96,86 @@
   </tbody>
 </table>
 
+<div style="width: 500px; margin: 5px auto; height: 400px" id="map"></div>
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<script>
+  function iniciarMap() {
+    var latitud = <%= @orden.orden_entrega.first.instrucciones.html_safe %>;
+    var props = {
+      center: new window.google.maps.LatLng(latitud),
+      zoom: 14,
+    };
+    var styles = {
+      hide: [
+        {
+          featureType: "poi.business",
+          stylers: [{ visibility: "off" }]
+        },
+        {
+          featureType: "transit",
+          elementType: "labels.icon",
+          stylers: [{ visibility: "off" }]
+        }
+      ]
+    };
+
+    var map = new window.google
+      .maps.Map(document.getElementById("map"), 
+          props);
+    map.setOptions({styles: styles["hide"]});
+
+    var usuario = new window.google.maps.Marker({
+      icon: "https://i.imgur.com/FdagUpZ.png",
+      position: latitud,
+      map: map
+    });
+    
+    function dibujarRuta(inicio, fin) {
+      var display = new window.google.maps.DirectionsRenderer();
+      var services = new window.google.maps.DirectionsService();
+      display.setMap(map);
+
+      var request = {
+        origin: inicio,
+        destination: fin,
+        travelMode: "DRIVING"
+      };
+
+      services.route(request, function (result, status) {
+        if (status === "OK") {
+          display.setDirections(result);
+        }
+      });
+    }
+
+    var lugar = undefined;
+    map.addListener("click", function(evento){
+      if ( lugar ) {
+        lugar.setMap(null);
+      }
+      lugar = new window.google.maps.Marker({
+        position: evento.latLng,
+        map: map
+      });
+      dibujarRuta(latitud, evento.latLng);
+    });
+
+  }  
+</script>
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUOJDtovvrqNqvPnu60Pc0BgQjo45Tce0&callback=iniciarMap"></script>
+
+
+<div>
+  <%= @orden.orden_entrega.first.instrucciones %>
+</div>
 
 
 
-
-<%= link_to 'Editar', edit_orden_path(@orden), class: "btn btn-primary mb-4 d-print-none" %>
+<%= link_to 'Editar', edit_orden_path(@orden), class: "btn btn-warning mb-4 d-print-none" %>
 <%= link_to 'Volver', ordens_path, class: "btn btn-secondary mb-4 d-print-none" %>
 
 <a onclick= "window.print()" class="btn btn-primary mb-4 d-print-none">Imprimir</a>

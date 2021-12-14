@@ -1,6 +1,7 @@
 class Orden < ApplicationRecord
   belongs_to :cliente
   has_many :orden_producto
+  has_many :orden_entrega
 
   def get_total 
     t = 0

@@ -1,4 +1,5 @@
 class ProductosController < ApplicationController
+  before_action :authenticate_user!, except: [:filter, :show] 
   before_action :set_producto, only: %i[ show edit update destroy ]
 
   layout "admin", except: [:filter, :comprar]

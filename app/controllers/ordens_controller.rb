@@ -3,13 +3,45 @@ class OrdensController < ApplicationController
 
   before_action :set_orden, only: [:show, :edit, :update, :destroy]
 
-  layout "admin", except: [:carrito]
+  layout "admin", except: [:carrito, :confirmar] 
   # GET /ordens
   # GET /ordens.json
   def index
     @ordens = Orden.all
   end
 
+  def confirmar
+    #Buscamos al cliente asociado al usuario
+    cliente = Cliente.where(user_id: current_user.id).first
+    if cliente.blank?
+      #En caso de no existir, lo creamos
+      cliente = Cliente.new
+      cliente.nombres = "---"
+      cliente.apell_pat = "---"
+      cliente.apell_mat = "---"
+      cliente.nif = "---"
+      cliente.save
+    end
+    #Buscar la ultima orden del cliente encontrado
+    # Ejemplo: Sus ordenes son: 50, 60, 70, 80, 90
+    # Orden descendente => 90, 80, 70, 60, 50
+    ord = Orden.where(cliente_id: cliente.id)
+      .order("id desc")
+      .first
+      
+    if ord.blank?
+      ord = Orden.new
+      ord.cliente_id = cliente.id
+      # Cuenta de ordenes es: 45 => 0045
+      ord.codigo = "#{Orden.all.count + 1}".rjust(4, "0")
+      ord.proceso = "2016-10-30"
+      ord.entrega = "2016-10-30"
+      ord.cierre = "2016-10-30"
+      ord.save()
+    end
+    @orden = ord
+  end
+  
   def carrito
     @qty = params[:cantidad]
     @producto_id = params[:producto_id]

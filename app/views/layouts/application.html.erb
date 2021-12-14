@@ -27,13 +27,12 @@
           <ul class="navbar-nav ms-auto">
             <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/productos/filter">Productos</a></li>
             <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/#portfolio">Portafolio</a></li>
-            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/#about">Acerca de</a></li>
-            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/#contact">Contacto</a></li>
+            
             <% if signed_in? %>
             <li class="nav-item mx-0 mx-lg-1">
-              <a href="/productos"
+              <a href="/ordens/carrito"
                 class="nav-link py-3 px-0 px-lg-3 rounded">
-                Admin
+                Carrito
               </a>
             </li>
             <% end %>
@@ -99,10 +98,17 @@
                     <!-- Footer About Text-->
                     <div class="col-lg-4">
                         <h4 class="text-uppercase mb-4">About Freelancer</h4>
-                        <p class="lead mb-0">
+                        <p class="lead mb-4">
                             Freelance is a free to use, MIT licensed Bootstrap theme created by
                             <a href="http://startbootstrap.com">Start Bootstrap</a>
                             .
+                        </p>
+                        <p class= "lead mb-0">
+                          <a class=" " href="/#about">Acerca</a></li>
+                          <span>  |  </span>
+                          <a class=" " href="/#contact">Contacto</a></li>
+                          <span>  |  </span>
+                          <a class=" " href="/productos">Admin</a></li>
                         </p>
                     </div>
                 </div>

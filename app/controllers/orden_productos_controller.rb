@@ -1,5 +1,5 @@
 class OrdenProductosController < ApplicationController
-  before_action :set_orden_producto, only: %i[ show edit update destroy ]
+  before_action :set_orden_producto, only: [:show, :edit, :update, :destroy ]
 
   # GET /orden_productos or /orden_productos.json
   def index
@@ -54,6 +54,27 @@ class OrdenProductosController < ApplicationController
       format.html { redirect_to orden_productos_url, notice: "Orden producto was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def delete_item
+  op = OrdenProducto.find(params[:id])
+  op.destroy
+  redirect_to "/ordens/carrito", flash: {notice: "Producto quitado del carrito."}
+  end
+
+  def update_cantidad
+    op = OrdenProducto.find(params[:id])
+    op.cantidad = params[:cantidad]
+    if op.valid?
+      op.save
+     redirect_to "/ordens/carrito", flash: {notice: "Cantidad actualizada."}
+    else
+      redirect_to "/ordens/carrito", flash: 
+      {alert: op.
+      errors.full_messages.join("<br>")}
+    end
+    
+    return
   end
 
   private

@@ -1,0 +1,119 @@
+<% if @orden.orden_entrega.count > 0 %>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1 class="text-center">Su orden fue confirmada</h1>
+      <h3 class="text-center">Gracias por su pedido.</h3>
+    </div>
+  </div>
+</div>
+<% else %>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Confirme su orden</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          Orden
+        </div>
+        <div class="list-group list-group-flush">
+          <div class="list-group-item">
+            <span style="margin-right: 10px">Numero de productos:</span>
+            <%= @orden.orden_producto.sum(:cantidad) %> Unidades
+          </div>
+          <div class="list-group-item">
+            Total a pagar: <%= @orden.get_total.to_i %> CLP
+          </div>
+        </div>
+      </div>
+      <div style="width: 100%; height: 400px" id="map"></div> 
+    </div>
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          Detalles de la entrega
+        </div>
+        <div class="card-body">
+          <form method="post" action="/orden_entregas">
+            <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+            <input type="hidden" name="orden_id" 
+              value="<%= @orden.id %>">
+            <div>
+              <label>Fecha: </label>
+              <input type="date" name="fecha" class="form-control" />
+            </div>
+            <div>
+              <label>Direccion: </label>
+              <textarea name="direccion" class="form-control"></textarea>
+            </div>
+            <div>
+              <label>Instrucciones: </label>
+              <textarea id="instrucciones" 
+              name="instrucciones" class="form-control"></textarea>
+            </div>
+            <div class="mt-4">
+              <button class="btn btn-primary" type="submit">Terminar pedido</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+
+<script>
+  function iniciarMap() {
+    var latitud = {lat: -33.44254048828231, 
+      lng: -70.66403091587807};
+    var props = {
+      center: new window.google.maps.LatLng(latitud),
+      zoom: 14,
+    };
+    var styles = {
+      hide: [
+        {
+          featureType: "poi.business",
+          stylers: [{ visibility: "off" }]
+        },
+        {
+          featureType: "transit",
+          elementType: "labels.icon",
+          stylers: [{ visibility: "off" }]
+        }
+      ]
+    };
+
+    var map = new window.google
+      .maps.Map(document.getElementById("map"), 
+          props);
+    map.setOptions({styles: styles["hide"]});
+    
+    var lugar = undefined;
+    map.addListener("click", function(evento){
+      if ( lugar ) {
+        lugar.setMap(null);
+      }
+      lugar = new window.google.maps.Marker({
+        position: evento.latLng,
+        map: map
+      });
+      
+    
+      $("#instrucciones")
+        .val(JSON.stringify(evento.latLng.toJSON(), null, 2));
+    });
+  }
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUOJDtovvrqNqvPnu60Pc0BgQjo45Tce0&callback=iniciarMap"></script>
+
+
+

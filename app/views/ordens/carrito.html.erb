@@ -5,19 +5,38 @@
       <table class="table">
         <thead>
           <tr>
-            <th>Producto</th>
-            <th>Cantidad</th>
-            <th>Precio </th>
-            <th>Subtotal </th>
+            <th width="100">Producto</th>
+            <th width="50">Cantidad</th>
+            <th width="50">Precio </th>
+            <th width="50">Subtotal </th>
+            <th width="50"></th>
+
           </tr>
         </thead>
         <tbody>
           <% @orden.orden_producto.each do |t| %>
           <tr>
             <td><%= t.producto.nombre %></td>
-            <td><%= t.cantidad %></td>
+            <td>
+              <form method="POST" action="/orden_productos/<%= t.id %>/update_cantidad">
+                <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+                <input type="hidden" name="_method" value="PUT">
+                <div class="input-group mb-3">
+                  <input type="text" 
+                    value="<%= t.cantidad %>"
+                    name= "cantidad" 
+                    class="form-control" >
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="submit">Editar</button>
+                  </div>
+                </div>
+              </form>
+            </td>
             <td><%= t.precio %></td>
             <td><%= t.cantidad * t.precio %></td>
+            <td>
+              <a href="/orden_productos/<%= t.id %>/delete_item" class="btn btn-danger">Quitar</a>
+            </td>
           </tr>
           <% end %>
           <tr>
@@ -29,7 +48,7 @@
         </tbody>
       </table>
         <div class= "text-end">
-          <button class="btn btn-primary">Confirmar</button>
+          <a href="/ordens/confirmar" class="btn btn-primary">Confirmar</a>
         </div>
     </div>
   </div>
